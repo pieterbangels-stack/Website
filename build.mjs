@@ -152,7 +152,7 @@ ${body}
 
 // ---------- page sections ----------
 const chain = [
-  ["Device Management", "Meters, installations and replacements: the physical base of every bill.", "Device and installation data drifts out of sync, and smart meter rollouts push volumes up fast.", "A clean device and installation design, and rollout processes that hold up at scale."],
+  ["Device Management", "Meters, installations and replacements: the physical base of every bill.", "The smart meter rollout drives a sharp increase in profile values to store and process.", "Guidance in determining the right data model to store these profile values, in S/4HANA or in other SAP products such as DER."],
   ["Meter reading", "Reads, validation and estimation, from manual reads to interval data.", "Implausible reads and estimations pile up and block billing.", "Validation rules and exception handling that keep reads flowing into billing."],
   ["Billing", "Rate structures, billing schemas and the exceptions that keep teams busy.", "Complex rates, billing outsorts and price changes under time pressure.", "Rate structures and schemas people can understand, and fewer outsorts to handle by hand."],
   ["Invoicing", "Turning billing documents into clear, correct invoices.", "Invoices customers do not understand, and changing legal requirements on content.", "Correct invoicing logic and output that customers can read."],
@@ -278,7 +278,7 @@ ${clientsBlock}
     <p class="label">Questions</p>
     <h2 id="h-faq">Frequently asked questions</h2>
     <div class="rule"></div>
-    <div class="faq">${faqs.map(([q, a], i) => `<details${i === 0 ? " open" : ""}><summary>${q}</summary><p>${a}</p></details>`).join("")}</div>
+    <div class="faq">${faqs.map(([q, a], i) => `<details><summary>${q}</summary><p>${a}</p></details>`).join("")}</div>
   </div>
 </section>
 
