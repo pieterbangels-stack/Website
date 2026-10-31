@@ -15,7 +15,11 @@
     "linkedin": "https://www.linkedin.com/in/pieter-bangels",
     "sapCommunity": ""
   },
-  "languages": ["English", "Dutch"],
+  "languages": [
+    "English",
+    "Dutch",
+    "French"
+  ],
   "knowsAbout": [
     "SAP for Utilities",
     "SAP IS-U",
@@ -31,6 +35,10 @@
   ],
   "clients": [],
   "_clientsExample": [
-    { "name": "Example Utility", "logo": "assets/clients/example-utility.svg", "url": "https://www.example.com" }
+    {
+      "name": "Example Utility",
+      "logo": "assets/clients/example-utility.svg",
+      "url": "https://www.example.com"
+    }
   ]
 }

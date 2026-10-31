@@ -86,7 +86,7 @@ const person = {
   "@id": SITE + "/#pieter",
   name: cfg.name,
   jobTitle: cfg.jobTitle,
-  description: `${cfg.name} is an SAP Solution Architect specialising in SAP for Utilities (SAP IS-U and SAP S/4HANA Utilities), with more than 20 years of experience across the meter-to-cash process. He is based in ${cfg.location} and part of the ${cfg.employer.unit} at ${cfg.employer.name}.`,
+  description: `${cfg.name} is an SAP Solution Architect specialising in SAP for Utilities (SAP IS-U and SAP S/4HANA Utilities), with more than 20 years of experience across the meter-to-cash process. He is based in ${cfg.location} and is one of the partners at ${cfg.employer.name}.`,
   url: SITE + "/",
   email: "mailto:" + cfg.email,
   telephone: cfg.phone.replace(/\s/g, ""),
@@ -142,7 +142,7 @@ ${body}
 <footer class="site-foot">
   <div class="wrap foot-row">
     <span>© ${YEAR} ${esc(cfg.name)} · ${esc(cfg.jobTitle)} · ${esc(cfg.location)}</span>
-    <span>Part of the ${esc(cfg.employer.unit)} at <a href="${cfg.employer.url}" rel="noopener">${esc(cfg.employer.name)}</a></span>
+    <span>Partner at <a href="${cfg.employer.url}" rel="noopener">${esc(cfg.employer.name)}</a></span>
   </div>
 </footer>
 <script src="${up}assets/site.js" defer></script>
@@ -161,10 +161,10 @@ const chain = [
 ];
 
 const faqs = [
-  ["Who is Pieter Bangels?", `${cfg.name} is an SAP Solution Architect who specialises in SAP for Utilities. He has more than 20 years of experience with SAP IS-U and S/4HANA Utilities across the full meter-to-cash process, and is part of the ${cfg.employer.unit} at ${cfg.employer.name} in ${cfg.location}.`],
-  ["Which SAP utilities topics does Pieter cover?", "SAP IS-U on ECC 6.0 and SAP S/4HANA Utilities: device management, meter reading, billing, invoicing, FI-CA contract accounting and market communication. He combines solution architecture, functional analysis and object-oriented ABAP development."],
+  ["Who is Pieter Bangels?", `${cfg.name} is an SAP Solution Architect who specialises in SAP for Utilities. He has more than 20 years of experience with SAP IS-U and S/4HANA Utilities across the full meter-to-cash process, and is one of the partners at ${cfg.employer.name}.`],
+  ["Which SAP utilities topics does Pieter cover?", "SAP IS-U on ECC 6.0 and SAP S/4HANA Utilities: device management, meter reading, billing, invoicing, FI-CA contract accounting and market communication. He combines solution architecture, roadmap exercises, functional analysis and proofs of concept."],
   ["Can Pieter help us move from SAP IS-U to S/4HANA Utilities?", "Yes. He helps utilities choose a migration path, analyse custom code and keep billing running during the transition. Read his article on the most common misconceptions about this move in the Insights section."],
-  ["Can I invite Pieter to speak at an event?", "Yes. Pieter speaks at conferences, user groups, webinars and podcasts about SAP for Utilities, in English and Dutch. Contact him by email to discuss a slot."],
+  ["Can I invite Pieter to speak at an event?", "Yes. Pieter speaks at conferences, user groups, webinars and podcasts about SAP for Utilities, in English, Dutch and French. Contact him by email to discuss a slot."],
   ["Where does Pieter work?", `He is based in ${cfg.location} and available for projects and events across Europe.`],
 ];
 
@@ -185,15 +185,15 @@ function home() {
 <section class="hero">
   <div class="orbs" aria-hidden="true"><span class="orb orb-navy"></span><span class="orb orb-red"></span><span class="orb orb-ring"></span></div>
   <div class="wrap hero-inner">
-    <p class="label">SAP for Utilities · ${esc(cfg.location)}</p>
+    <p class="label">SAP for Utilities</p>
     <h1>SAP for utilities,<br><span>from meter to cash.</span></h1>
-    <p class="lede">I am ${esc(cfg.name)}, an SAP Solution Architect for utilities. I help energy and water companies run SAP IS-U and S/4HANA Utilities that bill correctly, communicate with the market and cost less to maintain.</p>
+    <p class="lede">I am ${esc(cfg.name)}, an SAP Solution Architect for utilities. I help energy and water companies to get the most out of their SAP landscape.</p>
     <div class="actions"><a class="btn" href="#contact">Start a conversation</a><a class="btn btn-line" href="#speaking">Invite me to speak</a></div>
     <dl class="facts">
       <div><dt><span data-count="20">20</span>+</dt><dd>years in SAP for utilities</dd></div>
-      <div><dt><span data-count="6">6</span></dt><dd>meter-to-cash domains</dd></div>
-      <div><dt>ECC&nbsp;→&nbsp;S/4</dt><dd>IS-U and S/4HANA Utilities</dd></div>
-      <div><dt>OO&nbsp;ABAP</dt><dd>hands-on development</dd></div>
+      <div><dt>Expert</dt><dd>in the meter-to-cash domains</dd></div>
+      <div><dt>ECC&nbsp;→&nbsp;S/4</dt><dd>IS-U and S/4HANA Utilities transformations</dd></div>
+      <div><dt>Architecture</dt><dd>Roadmap exercises</dd></div>
     </dl>
   </div>
 </section>
@@ -229,7 +229,7 @@ ${clientsBlock}
         ["SAP Solution Architect", "Designing utility landscapes on SAP ECC 6.0 and S/4HANA that fit the business and stay maintainable."],
         ["Cross-domain functional analyst", "Billing, invoicing, device management, FI-CA and more, so the handovers between domains work."],
         ["Market communication specialist", "Guiding utilities through market processes and message flows to gain a competitive edge."],
-        ["Object-oriented ABAP developer", "Hands-on programming, so architecture decisions are grounded in how the code really works."],
+        ["Proof of Concept enabler", "Setting up proofs of concept to showcase CX, FSA, DER and more, and their integrations with IS-U."],
       ].map((r, i) => `<div class="card"><span class="box">${String(i + 1).padStart(2, "0")}</span><h3>${r[0]}</h3><p>${r[1]}</p></div>`).join("")}
     </div>
   </div>
@@ -269,7 +269,7 @@ ${clientsBlock}
         ["AI in meter-to-cash: hype versus practice", "Where AI already helps in billing and customer service, and where it does not yet."],
       ].map((t, i) => `<div class="talk"><span class="box">${String(i + 1).padStart(2, "0")}</span><h3>${t[0]}</h3><p>${t[1]}</p></div>`).join("")}
     </div>
-    <p class="formats">Conferences · user groups · webinars · podcasts · customer workshops · in English and Dutch</p>
+    <p class="formats">Conferences · user groups · webinars · podcasts · customer workshops · in English, Dutch and French</p>
   </div>
 </section>
 
@@ -307,7 +307,6 @@ ${clientsBlock}
     <div class="contact-lines">
       <a href="mailto:${cfg.email}"><span>${cfg.email}</span><small>Email</small></a>
       <a href="tel:${cfg.phone.replace(/\s/g, "")}"><span>${cfg.phone}</span><small>Phone</small></a>
-      <button type="button" class="copy" data-copy="${cfg.email}">Copy email address</button>
       ${cfg.profiles.linkedin ? `<a href="${cfg.profiles.linkedin}" rel="noopener me"><span>LinkedIn</span><small>Profile</small></a>` : ""}
     </div>
     <img class="contact-logo" src="${LOGO_WHITE}" width="96" height="96" alt="">
@@ -381,7 +380,7 @@ function postPage(p) {
     <div class="prose">${p.html}</div>
     <aside class="author">
       <img src="../../${LOGO_BLUE}" width="56" height="56" alt="">
-      <div><p><strong>${esc(cfg.name)}</strong> is an SAP Solution Architect for utilities with more than 20 years in SAP IS-U and S/4HANA Utilities. He is part of the ${esc(cfg.employer.unit)} at ${esc(cfg.employer.name)}.</p>
+      <div><p><strong>${esc(cfg.name)}</strong> is an SAP Solution Architect for utilities with more than 20 years in SAP IS-U and S/4HANA Utilities. He is one of the partners at ${esc(cfg.employer.name)}.</p>
       <p><a href="mailto:${cfg.email}">${cfg.email}</a></p></div>
     </aside>
     ${others.length ? `<h2 class="h-more">More insights</h2>${postGrid(others, 2)}` : ""}
@@ -403,7 +402,7 @@ function llmsTxt() {
 
 > ${person.description}
 
-${cfg.name} is an SAP for Utilities expert. Topics: ${cfg.knowsAbout.join(", ")}. Available for projects, advisory work and speaking at events across Europe, in English and Dutch.
+${cfg.name} is an SAP for Utilities expert. Topics: ${cfg.knowsAbout.join(", ")}. Available for projects, advisory work and speaking at events across Europe, in English, Dutch and French.
 
 Contact: ${cfg.email} · ${cfg.phone}
 
