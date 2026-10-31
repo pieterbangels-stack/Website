@@ -1,0 +1,36 @@
+{
+  "siteUrl": "https://www.pieterbangels.com",
+  "name": "Pieter Bangels",
+  "jobTitle": "SAP Solution Architect for Utilities",
+  "tagline": "SAP for utilities, from meter to cash.",
+  "location": "Belgium",
+  "email": "pieter.bangels@thevaluechain.eu",
+  "phone": "+32 496 12 09 30",
+  "employer": {
+    "name": "TheValueChain",
+    "url": "https://www.thevaluechain.eu",
+    "unit": "Utilities unit"
+  },
+  "profiles": {
+    "linkedin": "",
+    "sapCommunity": ""
+  },
+  "languages": ["English", "Dutch"],
+  "knowsAbout": [
+    "SAP for Utilities",
+    "SAP IS-U",
+    "SAP S/4HANA Utilities",
+    "SAP ECC 6.0",
+    "Meter-to-cash",
+    "Utilities billing and invoicing",
+    "Device Management",
+    "FI-CA contract accounting",
+    "Utilities market communication",
+    "Object-oriented ABAP",
+    "Energy and utilities digital transformation"
+  ],
+  "clients": [],
+  "_clientsExample": [
+    { "name": "Example Utility", "logo": "assets/clients/example-utility.svg", "url": "https://www.example.com" }
+  ]
+}
