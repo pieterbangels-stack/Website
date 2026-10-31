@@ -153,11 +153,11 @@ ${body}
 // ---------- page sections ----------
 const chain = [
   ["Device Management", "Meters, installations and replacements: the physical base of every bill.", "The smart meter rollout drives a sharp increase in profile values to store and process.", "Guidance in determining the right data model to store these profile values, in S/4HANA or in other SAP products such as DER."],
-  ["Meter reading", "Reads, validation and estimation, from manual reads to interval data.", "Implausible reads and estimations pile up and block billing.", "Validation rules and exception handling that keep reads flowing into billing."],
-  ["Billing", "Rate structures, billing schemas and the exceptions that keep teams busy.", "Complex rates, billing outsorts and price changes under time pressure.", "Rate structures and schemas people can understand, and fewer outsorts to handle by hand."],
-  ["Invoicing", "Turning billing documents into clear, correct invoices.", "Invoices customers do not understand, and changing legal requirements on content.", "Correct invoicing logic and output that customers can read."],
-  ["FI-CA", "Contract accounting: payments, dunning and the cash at the end of the line.", "Open items, payment allocation and dunning that do not close the loop.", "A contract accounting set-up that turns every bill into cash."],
-  ["Market communication", "Message exchange with grid operators and the market.", "Market rules and message formats change often, and every change touches the core.", "Robust message processing that absorbs market changes without disruption."],
+  ["Meter reading", "Reads, validation and estimation, from manual reads to interval data.", "Implausible reads and estimations pile up and block billing.", "Optimised validation rules and automated exception handling that keep reads flowing into billing."],
+  ["Billing", "Rate structures, billing schemas and the exceptions that keep teams busy.", "Complex rates, billing outsorts and price changes under time pressure.", "Simpler rate structures and schemas, using external prices, time-of-use billing, flexible user-exit logic and more."],
+  ["Invoicing", "Turning billing documents into clear, correct, on-time invoices.", "Invoices customers do not understand, and changing legal requirements on content.", "Correct invoicing logic and output that customers can read."],
+  ["FI-CA", "Contract accounting: payments, dunning and the cash at the end of the line.", "Open items, payment allocation and dunning that do not close the loop.", "A contract accounting set-up that reduces bad debt and turns every bill into cash."],
+  ["Market communication", "Message exchange with grid operators and the market.", "Market rules and message formats change often, and every change touches the core.", "Robust message processing and market process logic that absorb market changes without disruption."],
 ];
 
 const faqs = [
@@ -241,7 +241,7 @@ ${clientsBlock}
     <h2 id="h-results">What utilities get out of it.</h2>
     <div class="rule"></div>
     <ol class="rows">
-      <li><span class="box">01</span><div><h3>Implementations that land</h3><p>SAP implementations delivered end to end, giving utilities a core system they can build on.</p></div></li>
+      <li><span class="box">01</span><div><h3>Implementations that land</h3><p>SAP implementations delivered end to end and on time, giving utilities a core system they can build on.</p></div></li>
       <li><span class="box">02</span><div><h3>Lower maintenance</h3><p>Existing SAP landscapes improved and simplified, cutting the effort needed to keep them running.</p></div></li>
       <li><span class="box">03</span><div><h3>Value on the bottom line</h3><p>Hidden value unlocked in existing systems, so SAP contributes to profitability instead of only cost.</p></div></li>
     </ol>
