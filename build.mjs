@@ -253,7 +253,7 @@ ${clientsBlock}
     <p class="label">Insights</p>
     <div class="split"><h2 id="h-ins">Latest articles on SAP for utilities.</h2><a class="more" href="${link(0, "blog/")}">All articles →</a></div>
     <div class="rule"></div>
-    ${postGrid(latest, 0)}
+    ${postCarousel(latest, 0)}
   </div>
 </section>
 
@@ -340,6 +340,18 @@ function postGrid(list, depth) {
     <p>${esc(p.summary)}</p>
     ${p.tags.length ? `<p class="tags">${p.tags.map((t) => `<span>${esc(t)}</span>`).join("")}</p>` : ""}
   </article>`).join("")}</div>`;
+}
+
+function postCarousel(list, depth) {
+  if (list.length < 2) return postGrid(list, depth);
+  return `<div class="carousel" data-carousel>
+    <div class="car-track" tabindex="0" role="region" aria-label="Latest articles">${postGrid(list, depth).replace('<div class="posts">', "").replace(/<\/div>$/, "")}</div>
+    <div class="car-nav">
+      <button type="button" class="car-btn" data-dir="-1" aria-label="Previous article">←</button>
+      <div class="car-dots" aria-hidden="true">${list.map((_, i) => `<span${i === 0 ? ' class="on"' : ""}></span>`).join("")}</div>
+      <button type="button" class="car-btn" data-dir="1" aria-label="Next article">→</button>
+    </div>
+  </div>`;
 }
 
 function blogIndex() {

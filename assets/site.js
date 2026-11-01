@@ -103,3 +103,37 @@
     });
   });
 })();
+
+// Latest-articles carousel (cards stay in the HTML; this only adds navigation)
+(function () {
+  document.querySelectorAll("[data-carousel]").forEach(function (c) {
+    var track = c.querySelector(".car-track");
+    var cards = Array.prototype.slice.call(track.children);
+    var dots = Array.prototype.slice.call(c.querySelectorAll(".car-dots span"));
+    var prev = c.querySelector('[data-dir="-1"]'), next = c.querySelector('[data-dir="1"]');
+    function index() {
+      var left = track.scrollLeft, best = 0, d = Infinity;
+      cards.forEach(function (card, i) { var x = Math.abs(card.offsetLeft - track.offsetLeft - left); if (x < d) { d = x; best = i; } });
+      return best;
+    }
+    function update() {
+      var max = track.scrollWidth - track.clientWidth - 2, i = track.scrollLeft >= max ? cards.length - 1 : index();
+      dots.forEach(function (dot, j) { dot.classList.toggle("on", j === i); });
+      prev.disabled = track.scrollLeft <= 2;
+      next.disabled = track.scrollLeft >= max;
+    }
+    function go(dir) {
+      var i = Math.max(0, Math.min(cards.length - 1, index() + dir));
+      track.scrollTo({ left: cards[i].offsetLeft - track.offsetLeft, behavior: "smooth" });
+    }
+    prev.addEventListener("click", function () { go(-1); });
+    next.addEventListener("click", function () { go(1); });
+    track.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight") { e.preventDefault(); go(1); }
+      if (e.key === "ArrowLeft") { e.preventDefault(); go(-1); }
+    });
+    var t; track.addEventListener("scroll", function () { clearTimeout(t); t = setTimeout(update, 60); }, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+  });
+})();
