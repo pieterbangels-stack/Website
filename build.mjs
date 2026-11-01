@@ -308,6 +308,7 @@ ${clientsBlock}
       <a href="mailto:${cfg.email}"><span>${cfg.email}</span><small>Email</small></a>
       <a href="tel:${cfg.phone.replace(/\s/g, "")}"><span>${cfg.phone}</span><small>Phone</small></a>
       ${cfg.profiles.linkedin ? `<a href="${cfg.profiles.linkedin}" rel="noopener me"><span>LinkedIn</span><small>Profile</small></a>` : ""}
+      ${cfg.profiles.sapCommunity ? `<a href="${cfg.profiles.sapCommunity}" rel="noopener me"><span>SAP Community</span><small>Blogs and answers</small></a>` : ""}
     </div>
     <img class="contact-logo" src="${LOGO_WHITE}" width="96" height="96" alt="">
   </div>
@@ -432,6 +433,8 @@ function llmsTxt() {
 ${cfg.name} is an SAP for Utilities expert. Topics: ${cfg.knowsAbout.join(", ")}. Available for projects, advisory work and speaking at events across Europe, in English, Dutch and French.
 
 Contact: ${cfg.email} · ${cfg.phone}
+
+Profiles: ${[cfg.profiles.linkedin && "LinkedIn " + cfg.profiles.linkedin, cfg.profiles.sapCommunity && "SAP Community " + cfg.profiles.sapCommunity].filter(Boolean).join(" · ")}
 
 ## Pages
 
