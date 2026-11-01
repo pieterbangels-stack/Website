@@ -40,5 +40,6 @@
       "logo": "assets/clients/example-utility.svg",
       "url": "https://www.example.com"
     }
-  ]
+  ],
+  "calendly": "https://calendly.com/pieter-bangels/30min"
 }

@@ -166,7 +166,7 @@ const faqs = [
   ["Who is Pieter Bangels?", `${cfg.name} is an SAP Solution Architect who specialises in SAP for Utilities. He has more than 20 years of experience with SAP IS-U and S/4HANA Utilities across the full meter-to-cash process, and is one of the partners at ${cfg.employer.name}.`],
   ["Which SAP utilities topics does Pieter cover?", "SAP IS-U on ECC 6.0 and SAP S/4HANA Utilities: device management, meter reading, billing, invoicing, FI-CA contract accounting and market communication. He combines solution architecture, roadmap exercises, functional analysis and proofs of concept."],
   ["Can Pieter help us move from SAP IS-U to S/4HANA Utilities?", "Yes. He helps utilities choose a migration path, analyse custom code and keep billing running during the transition. Read his article on the most common misconceptions about this move in the Insights section."],
-  ["Can I invite Pieter to speak at an event?", "Yes. Pieter speaks at conferences, user groups, webinars and podcasts about SAP for Utilities, in English, Dutch and French. Contact him by email to discuss a slot."],
+  ["Can I invite Pieter to speak at an event?", "Yes. Pieter speaks at conferences, user groups, webinars and podcasts about SAP for Utilities, in English, Dutch and French. Contact him by email or book a 30-minute call to discuss a slot."],
   ["Where does Pieter work?", `He is based in ${cfg.location} and available for projects and events across Europe.`],
 ];
 
@@ -190,7 +190,7 @@ function home() {
     <p class="label">SAP for Utilities</p>
     <h1>SAP for utilities,<br><span>from meter to cash.</span></h1>
     <p class="lede">I am ${esc(cfg.name)}, an SAP Solution Architect for utilities. I help energy and water companies to get the most out of their SAP landscape.</p>
-    <div class="actions"><a class="btn" href="#contact">Start a conversation</a><a class="btn btn-line" href="#speaking">Invite me to speak</a></div>
+    <div class="actions">${cfg.calendly ? `<a class="btn" href="${cfg.calendly}" target="_blank" rel="noopener">Book a 30-min call</a>` : `<a class="btn" href="#contact">Start a conversation</a>`}<a class="btn btn-line" href="#speaking">Invite me to speak</a></div>
    </div>
    <figure class="portrait">
      <span class="orb orb-red" aria-hidden="true"></span><span class="orb orb-ring" aria-hidden="true"></span>
@@ -307,17 +307,18 @@ ${clientsBlock}
   <div class="orbs" aria-hidden="true"><span class="orb orb-navy2"></span><span class="orb orb-red2"></span></div>
   <div class="wrap contact-inner">
     <div>
+      <img class="contact-logo" src="${LOGO_WHITE}" width="88" height="88" alt="">
       <p class="label label-light">Ready to talk?</p>
       <h2 id="h-contact">Let's make your SAP landscape work for your utility.</h2>
       <p>A project, a second opinion on your landscape, or a speaking slot at your event: I am happy to hear from you.</p>
     </div>
     <div class="contact-lines">
+      ${cfg.calendly ? `<a class="book" href="${cfg.calendly}" target="_blank" rel="noopener"><span>Book a 30-min call</span><small>Calendly</small></a>` : ""}
       <a href="mailto:${cfg.email}"><span>${cfg.email}</span><small>Email</small></a>
       <a href="tel:${cfg.phone.replace(/\s/g, "")}"><span>${cfg.phone}</span><small>Phone</small></a>
       ${cfg.profiles.linkedin ? `<a href="${cfg.profiles.linkedin}" rel="noopener me"><span>LinkedIn</span><small>Profile</small></a>` : ""}
       ${cfg.profiles.sapCommunity ? `<a href="${cfg.profiles.sapCommunity}" rel="noopener me"><span>SAP Community</span><small>Blogs and answers</small></a>` : ""}
     </div>
-    <img class="contact-logo" src="${LOGO_WHITE}" width="96" height="96" alt="">
   </div>
 </section>`;
 
@@ -439,7 +440,7 @@ function llmsTxt() {
 
 ${cfg.name} is an SAP for Utilities expert. Topics: ${cfg.knowsAbout.join(", ")}. Available for projects, advisory work and speaking at events across Europe, in English, Dutch and French.
 
-Contact: ${cfg.email} · ${cfg.phone}
+Contact: ${cfg.email} · ${cfg.phone}${cfg.calendly ? " · Book a 30-minute call: " + cfg.calendly : ""}
 
 Profiles: ${[cfg.profiles.linkedin && "LinkedIn " + cfg.profiles.linkedin, cfg.profiles.sapCommunity && "SAP Community " + cfg.profiles.sapCommunity].filter(Boolean).join(" · ")}
 
