@@ -7,7 +7,7 @@ tags: Market processes
 
 In a deregulated energy market, a supplier, a grid operator and a metering company all need the same facts about a customer at the same time. A move-in, a supplier switch or a meter change triggers a chain of messages between market parties, usually in formats defined by the regulator. In many SAP IS-U landscapes, this market communication is where most of the custom code lives.
 
-SAP has a dedicated answer for this on S/4HANA: **Market Process Management for Utilities (MPM)**. You can find a good [introduction to Market Process Management on SAP Community](https://community.sap.com/t5/sap-for-utilities-blog-posts/market-process-management-for-utilities-an-introduction/ba-p/13696025). In this article I explain where it comes from and what it means for your migration.
+SAP has a dedicated answer for this on S/4HANA: **Market Process Management for Utilities (MPM)**. I wrote an [introduction to Market Process Management on SAP Community](https://community.sap.com/t5/sap-for-utilities-blog-posts/market-process-management-for-utilities-an-introduction/ba-p/13696025). In this article I go one step further: where the solution comes from and what it means for your migration.
 
 ## From IDE to MPM: how we got here
 
