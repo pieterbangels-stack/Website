@@ -85,6 +85,7 @@ const person = {
   "@type": "Person",
   "@id": SITE + "/#pieter",
   name: cfg.name,
+  image: SITE + "/assets/pieter-bangels.jpg",
   jobTitle: cfg.jobTitle,
   description: `${cfg.name} is an SAP Solution Architect specialising in SAP for Utilities (SAP IS-U and SAP S/4HANA Utilities), with more than 20 years of experience across the meter-to-cash process. He is based in ${cfg.location} and is one of the partners at ${cfg.employer.name}.`,
   url: SITE + "/",
@@ -122,6 +123,7 @@ function layout({ depth, title, description, canonical, body, jsonld, ogType = "
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${canonical}">
 <meta property="og:site_name" content="${esc(cfg.name)}">
+<meta property="og:image" content="${SITE}/assets/pieter-bangels.jpg">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="${up}${LOGO_BLUE}" type="image/svg+xml">
 <link rel="stylesheet" href="${up}assets/site.css">
@@ -183,12 +185,17 @@ function home() {
 
   const body = `
 <section class="hero">
-  <div class="orbs" aria-hidden="true"><span class="orb orb-navy"></span><span class="orb orb-red"></span><span class="orb orb-ring"></span></div>
   <div class="wrap hero-inner">
+   <div class="hero-text">
     <p class="label">SAP for Utilities</p>
     <h1>SAP for utilities,<br><span>from meter to cash.</span></h1>
     <p class="lede">I am ${esc(cfg.name)}, an SAP Solution Architect for utilities. I help energy and water companies to get the most out of their SAP landscape.</p>
     <div class="actions"><a class="btn" href="#contact">Start a conversation</a><a class="btn btn-line" href="#speaking">Invite me to speak</a></div>
+   </div>
+   <figure class="portrait">
+     <span class="orb orb-red" aria-hidden="true"></span><span class="orb orb-ring" aria-hidden="true"></span>
+     <img src="assets/pieter-bangels.webp" width="640" height="640" alt="Portrait of ${esc(cfg.name)}, SAP Solution Architect for utilities" fetchpriority="high">
+   </figure>
     <dl class="facts">
       <div><dt><span data-count="20">20</span>+</dt><dd>years in SAP for utilities</dd></div>
       <div><dt>Expert</dt><dd>in the meter-to-cash domains</dd></div>
@@ -407,7 +414,7 @@ function postPage(p) {
     <p class="summary">${esc(p.summary)}</p>
     <div class="prose">${p.html}</div>
     <aside class="author">
-      <img src="../../${LOGO_BLUE}" width="56" height="56" alt="">
+      <img class="author-photo" src="../../assets/pieter-bangels.webp" width="72" height="72" alt="${esc(cfg.name)}">
       <div><p><strong>${esc(cfg.name)}</strong> is an SAP Solution Architect for utilities with more than 20 years in SAP IS-U and S/4HANA Utilities. He is one of the partners at ${esc(cfg.employer.name)}.</p>
       <p><a href="mailto:${cfg.email}">${cfg.email}</a></p></div>
     </aside>

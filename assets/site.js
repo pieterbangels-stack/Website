@@ -4,9 +4,9 @@
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   // Orbs follow the cursor a little (TVC cover circles)
-  var orbs = document.querySelectorAll(".hero .orb");
+  var orbs = document.querySelectorAll(".hero .orb, .portrait img");
   if (orbs.length && !reduce && window.matchMedia("(pointer: fine)").matches) {
-    var depth = [18, -28, 40];
+    var depth = [-26, 34, 10];
     window.addEventListener("pointermove", function (e) {
       var x = e.clientX / window.innerWidth - 0.5, y = e.clientY / window.innerHeight - 0.5;
       orbs.forEach(function (o, i) { o.style.transform = "translate(" + (x * depth[i]).toFixed(1) + "px," + (y * depth[i]).toFixed(1) + "px)"; });
