@@ -31,4 +31,4 @@ Billing is where customers notice every mistake. Plan parallel billing runs that
 
 Start with an honest assessment of your current IS-U landscape: custom code, data quality and the processes that differ from the standard. That assessment decides your migration path, not the other way around.
 
-Want to discuss your situation? Get in touch.
+Want to discuss your situation? [Get in touch](mailto:pieter.bangels@thevaluechain.eu).
