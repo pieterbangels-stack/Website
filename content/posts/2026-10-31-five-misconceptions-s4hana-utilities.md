@@ -1,5 +1,5 @@
 ---
-title: Five misconceptions about moving from SAP IS-U to S/4HANA Utilities
+title: Moving from SAP IS-U to S/4HANA Utilities: five misconceptions to avoid
 date: 2026-10-31
 summary: The move from IS-U to S/4HANA Utilities is not a technical upgrade. These are the five assumptions I see most often in utility projects, and what to do instead.
 tags: Transformation
