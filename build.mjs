@@ -344,12 +344,27 @@ function postGrid(list, depth) {
 
 function postCarousel(list, depth) {
   if (list.length < 2) return postGrid(list, depth);
+  const n = String(list.length).padStart(2, "0");
   return `<div class="carousel" data-carousel>
-    <div class="car-track" tabindex="0" role="region" aria-label="Latest articles">${postGrid(list, depth).replace('<div class="posts">', "").replace(/<\/div>$/, "")}</div>
-    <div class="car-nav">
-      <button type="button" class="car-btn" data-dir="-1" aria-label="Previous article">←</button>
-      <div class="car-dots" aria-hidden="true">${list.map((_, i) => `<span${i === 0 ? ' class="on"' : ""}></span>`).join("")}</div>
-      <button type="button" class="car-btn" data-dir="1" aria-label="Next article">→</button>
+    <div class="car-bar">
+      <p class="car-count" aria-live="polite"><span data-car-now>01</span> / ${n}</p>
+      <div class="car-arrows">
+        <button type="button" class="car-btn" data-dir="-1" aria-label="Previous article">&#8592;</button>
+        <button type="button" class="car-btn" data-dir="1" aria-label="Next article">&#8594;</button>
+      </div>
+    </div>
+    <div class="car-track" tabindex="0" role="region" aria-label="Latest articles">
+      ${list.map((p, i) => `<article class="slide">
+        <div class="slide-head">
+          <span class="slide-num">${String(i + 1).padStart(2, "0")}</span>
+          <p class="meta"><time datetime="${p.date}">${fmtDate(p.date)}</time> · ${p.minutes} min read${p.tags.length ? " · " + p.tags.map(esc).join(", ") : ""}</p>
+          <h3><a href="${link(depth, `blog/${p.slug}/`)}">${esc(p.title)}</a></h3>
+        </div>
+        <div class="slide-body">
+          <p>${esc(p.summary)}</p>
+          <span class="read">Read the article &#8594;</span>
+        </div>
+      </article>`).join("")}
     </div>
   </div>`;
 }

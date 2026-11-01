@@ -104,27 +104,23 @@
   });
 })();
 
-// Latest-articles carousel (cards stay in the HTML; this only adds navigation)
+// Latest-articles carousel: one article per slide (all articles stay in the HTML)
 (function () {
   document.querySelectorAll("[data-carousel]").forEach(function (c) {
     var track = c.querySelector(".car-track");
-    var cards = Array.prototype.slice.call(track.children);
-    var dots = Array.prototype.slice.call(c.querySelectorAll(".car-dots span"));
+    var slides = Array.prototype.slice.call(track.children);
+    var now = c.querySelector("[data-car-now]");
     var prev = c.querySelector('[data-dir="-1"]'), next = c.querySelector('[data-dir="1"]');
-    function index() {
-      var left = track.scrollLeft, best = 0, d = Infinity;
-      cards.forEach(function (card, i) { var x = Math.abs(card.offsetLeft - track.offsetLeft - left); if (x < d) { d = x; best = i; } });
-      return best;
-    }
+    function index() { return Math.round(track.scrollLeft / Math.max(1, track.clientWidth)); }
     function update() {
-      var max = track.scrollWidth - track.clientWidth - 2, i = track.scrollLeft >= max ? cards.length - 1 : index();
-      dots.forEach(function (dot, j) { dot.classList.toggle("on", j === i); });
-      prev.disabled = track.scrollLeft <= 2;
-      next.disabled = track.scrollLeft >= max;
+      var i = Math.max(0, Math.min(slides.length - 1, index()));
+      now.textContent = String(i + 1).padStart(2, "0");
+      prev.disabled = i === 0;
+      next.disabled = i === slides.length - 1;
     }
     function go(dir) {
-      var i = Math.max(0, Math.min(cards.length - 1, index() + dir));
-      track.scrollTo({ left: cards[i].offsetLeft - track.offsetLeft, behavior: "smooth" });
+      var i = Math.max(0, Math.min(slides.length - 1, index() + dir));
+      track.scrollTo({ left: i * track.clientWidth, behavior: "smooth" });
     }
     prev.addEventListener("click", function () { go(-1); });
     next.addEventListener("click", function () { go(1); });
