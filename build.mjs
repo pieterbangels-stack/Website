@@ -10,6 +10,9 @@ const OUT = path.join(ROOT, PREVIEW ? "dist-preview" : "dist");
 const cfg = JSON.parse(fs.readFileSync(path.join(ROOT, "config.json"), "utf8"));
 const SITE = cfg.siteUrl.replace(/\/$/, "");
 const YEAR = new Date().getFullYear();
+// Full ISO 8601 date-time with time zone, as Google requires for structured data
+const isoDT = (d) => (/T/.test(d) ? d : `${d}T08:00:00+00:00`);
+const BUILD_TIME = new Date().toISOString().replace(/\.\d{3}Z$/, "+00:00");
 
 // ---------- helpers ----------
 const esc = (s = "") => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -75,7 +78,7 @@ const posts = fs.existsSync(postsDir) ? fs.readdirSync(postsDir).filter((f) => f
   const date = meta.date || f.slice(0, 10);
   const tags = (meta.tags || "").split(",").map((t) => t.trim()).filter(Boolean);
   const words = body.split(/\s+/).filter(Boolean).length;
-  return { slug, date, title: meta.title || slug, summary: meta.summary || "", tags, body, html: markdown(body), minutes: Math.max(1, Math.round(words / 220)), draft: meta.draft === "true" };
+  return { slug, date, updated: meta.updated || "", title: meta.title || slug, summary: meta.summary || "", tags, body, html: markdown(body), minutes: Math.max(1, Math.round(words / 220)), draft: meta.draft === "true" };
 }).filter((p) => !p.draft).sort((a, b) => b.date.localeCompare(a.date)) : [];
 
 const LOGO_BLUE = "assets/tvc-logo-blue.svg";
@@ -327,7 +330,7 @@ ${clientsBlock}
     "@graph": [
       person,
       { "@type": "WebSite", "@id": SITE + "/#website", url: SITE + "/", name: cfg.name, inLanguage: "en", publisher: { "@id": SITE + "/#pieter" } },
-      { "@type": "ProfilePage", "@id": SITE + "/#profile", url: SITE + "/", name: `${cfg.name}, ${cfg.jobTitle}`, mainEntity: { "@id": SITE + "/#pieter" }, isPartOf: { "@id": SITE + "/#website" }, dateModified: new Date().toISOString().slice(0, 10) },
+      { "@type": "ProfilePage", "@id": SITE + "/#profile", url: SITE + "/", name: `${cfg.name}, ${cfg.jobTitle}`, mainEntity: { "@id": SITE + "/#pieter" }, isPartOf: { "@id": SITE + "/#website" }, dateModified: BUILD_TIME },
       { "@type": "FAQPage", "@id": SITE + "/#faq", mainEntity: faqs.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) },
     ],
   };
@@ -395,7 +398,7 @@ function blogIndex() {
     "@context": "https://schema.org",
     "@graph": [
       person,
-      { "@type": "Blog", "@id": SITE + "/blog/#blog", url: SITE + "/blog/", name: `${cfg.name}: Insights on SAP for Utilities`, author: { "@id": SITE + "/#pieter" }, blogPost: posts.map((p) => ({ "@type": "BlogPosting", headline: p.title, url: `${SITE}/blog/${p.slug}/`, datePublished: p.date })) },
+      { "@type": "Blog", "@id": SITE + "/blog/#blog", url: SITE + "/blog/", name: `${cfg.name}: Insights on SAP for Utilities`, author: { "@id": SITE + "/#pieter" }, blogPost: posts.map((p) => ({ "@type": "BlogPosting", headline: p.title, url: `${SITE}/blog/${p.slug}/`, datePublished: isoDT(p.date) })) },
     ],
   };
   return layout({ depth: 1, title: `Insights on SAP for Utilities | ${cfg.name}`, description: `Articles by ${cfg.name} on SAP IS-U, S/4HANA Utilities, market communication and AI in meter-to-cash.`, canonical: SITE + "/blog/", body, jsonld, active: "Insights" });
@@ -426,7 +429,7 @@ function postPage(p) {
     "@context": "https://schema.org",
     "@graph": [
       person,
-      { "@type": "BlogPosting", "@id": url + "#article", headline: p.title, description: p.summary, datePublished: p.date, dateModified: p.date, url, mainEntityOfPage: url, inLanguage: "en", keywords: p.tags.join(", "), author: { "@id": SITE + "/#pieter" }, publisher: { "@id": SITE + "/#pieter" } },
+      { "@type": "BlogPosting", "@id": url + "#article", headline: p.title, description: p.summary, datePublished: isoDT(p.date), dateModified: isoDT(p.updated || p.date), url, mainEntityOfPage: url, inLanguage: "en", keywords: p.tags.join(", "), author: { "@id": SITE + "/#pieter" }, publisher: { "@id": SITE + "/#pieter" } },
     ],
   };
   return layout({ depth: 2, title: `${p.title} | ${cfg.name}`, description: p.summary, canonical: url, body, jsonld, ogType: "article", active: "Insights" });
